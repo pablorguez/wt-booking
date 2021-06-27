@@ -21,6 +21,13 @@ const nextConfig = {
   experimental: {
     modern: true,
   },
+  redirects: () => [
+    {
+      source: '/',
+      destination: '/when',
+      permanent: true,
+    },
+  ],
   rewrites: () => [
     {
       source: '/sw.js',
