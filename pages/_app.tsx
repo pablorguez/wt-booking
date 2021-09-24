@@ -5,7 +5,21 @@ import { Box, Container } from '@material-ui/core';
 import { Layout } from '~/components/layout';
 import Header from '~/components/header';
 
-const reducer = (state: Object, { type, value }) => {
+interface Data {
+  when: {
+    from: string;
+    to: string;
+  };
+  package: number | null;
+  event: string;
+}
+
+interface Reducer {
+  type: string;
+  value: Data;
+}
+
+const reducer = (state: Data, { type, value }: Reducer) => {
   let newState;
 
   switch (type) {

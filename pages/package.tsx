@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Box, Button, Paper, Typography } from '@material-ui/core';
-import { CheckCircle } from '@material-ui/icons';
+import Package from '../components/package';
 
-const packages = [
+interface Package {
+  id: number;
+  title: string;
+  price: string;
+  description: string;
+}
+
+const packages: Package[] = [
   {
     id: 0,
     title: 'Package 1',
@@ -12,47 +19,50 @@ const packages = [
   },
 ];
 
-const Package = ({ data, updateFormData }) => {
-  const [expanded, setExpanded] = useState();
+const Packages = ({ data, updateFormData }) => {
+  const [selectedPackage, setSelected] = useState();
   const persist = () => {
     updateFormData({
       type: 'package',
-      value: packages.filter(({ id }) => id === expanded)[0],
+      value: selectedPackage,
     });
   };
 
   useEffect(() => {
-    data.package && setExpanded(data.package.id);
+    data.package && setSelected(data.package);
   }, [data]);
 
   return (
     <Box>
-      <Box marginY={4}>
+      <Box marginTop={4}>
         <Typography variant="h4">Select a package</Typography>
       </Box>
-      <Box>
-        {packages.map(({ description, id, price, title }) => (
-          <Paper key={id} elevation={2} onClick={() => setExpanded(id)}>
-            <Typography variant="h5">{title}</Typography>
-            <Typography variant="h5">{price}</Typography>
-            {id === expanded && <CheckCircle />}
-            {id === expanded && (
-              <Typography variant="body1">{description}</Typography>
-            )}
-            {id === expanded && (
-              <Link href="/confirmation">
-                <Button variant="contained" onClick={persist} fullWidth>
-                  <Typography variant="body1">
-                    Continue with this package
-                  </Typography>
-                </Button>
-              </Link>
-            )}
-          </Paper>
+      <Box marginY={4}>
+        {packages.map(pack => (
+          <Package
+            key={pack.id}
+            {...pack}
+            selected={pack.id === selectedPackage?.id}
+            onClick={() => setSelected(pack)}
+          />
         ))}
+      </Box>
+      <Box>
+        <Link href="/confirmation">
+          <Button
+            color="primary"
+            disabled={!selectedPackage}
+            fullWidth
+            onClick={persist}
+            size="large"
+            variant="contained"
+          >
+            <Typography variant="h5">Continue</Typography>
+          </Button>
+        </Link>
       </Box>
     </Box>
   );
 };
 
-export default Package;
+export default Packages;
