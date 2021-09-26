@@ -31,7 +31,7 @@ const Packages = ({ data, updateFormData }) => {
         <Typography variant="h4">Select a package</Typography>
       </Box>
       <Box marginY={4}>
-        {packages.map(pack => (
+        {packages.map((pack) => (
           <Package
             key={pack.id}
             {...pack}

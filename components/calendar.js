@@ -6,7 +6,7 @@ import {
 
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 
-const Calendar = props => (
+const Calendar = (props) => (
   <ModernCalendar {...props} minimumDate={utils('en').getToday()} />
 );
 
