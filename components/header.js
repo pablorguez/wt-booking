@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Box, Typography } from '@material-ui/core';
+import { AppBar, Box, Typography } from '@mui/material';
 
 const Header = () => (
   <AppBar position="static" color="transparent">

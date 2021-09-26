@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Box, Button, Paper, Typography } from '@material-ui/core';
+import { Box, Button, Paper, Typography } from '@mui/material';
 import Package from '../components/package';
 
-interface Package {
-  id: number;
-  title: string;
-  price: string;
-  description: string;
-}
-
-const packages: Package[] = [
+const packages = [
   {
     id: 0,
     title: 'Package 1',

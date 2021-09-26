@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Button, Typography } from '@material-ui/core';
-import { InfoOutlined } from '@material-ui/icons';
+import { Box, Button, Typography } from '@mui/material';
+import { InfoOutlined } from '@mui/icons-material';
 
 import Package from '../components/package';
 

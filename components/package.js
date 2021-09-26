@@ -1,23 +1,8 @@
 import React from 'react';
-import { Box, Paper, Typography } from '@material-ui/core';
-import { CheckCircle } from '@material-ui/icons';
+import { Box, Paper, Typography } from '@mui/material';
+import { CheckCircle } from '@mui/icons-material';
 
-interface PackageItem {
-  id: number;
-  title: string;
-  price: string;
-  description: string;
-  selected: boolean;
-  onClick: () => void;
-}
-
-const Package = ({
-  title,
-  price,
-  description,
-  selected,
-  onClick,
-}: PackageItem) => (
+const Package = ({ title, price, description, selected, onClick }) => (
   <Paper elevation={2} onClick={onClick}>
     <Box p={2}>
       <Typography variant="h5">{title}</Typography>

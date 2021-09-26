@@ -1,25 +1,10 @@
 import React, { useEffect, useReducer } from 'react';
-import type { AppProps } from 'next/app';
-import { Box, Container } from '@material-ui/core';
+import { Box, Container } from '@mui/material';
 
-import { Layout } from '~/components/layout';
-import Header from '~/components/header';
+import { Layout } from '../components/layout';
+import Header from '../components/header';
 
-interface Data {
-  when: {
-    from: string;
-    to: string;
-  };
-  package: number | null;
-  event: string;
-}
-
-interface Reducer {
-  type: string;
-  value: Data;
-}
-
-const reducer = (state: Data, { type, value }: Reducer) => {
+const reducer = (state, { type, value }) => {
   let newState;
 
   switch (type) {
@@ -38,7 +23,7 @@ const reducer = (state: Data, { type, value }: Reducer) => {
   return newState;
 };
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }) => {
   const [state, dispatch] = useReducer(reducer, {
     when: { from: '', to: '' },
     package: null,
